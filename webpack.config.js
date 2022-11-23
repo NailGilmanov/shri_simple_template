@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const StatoscopePlugin = require('@statoscope/webpack-plugin').default;
+const StatoscopeWebpackPlugin = require('@statoscope/webpack-plugin').default;
 const ProvidePlugin = require('webpack').ProvidePlugin;
 const InterpolateHtmlPlugin = require('interpolate-html-plugin')
 
@@ -16,7 +16,7 @@ const config = {
         new HtmlWebpackPlugin({
             template: './public/index.html',
         }),
-        new StatoscopePlugin({
+        new StatoscopeWebpackPlugin({
             saveStatsTo: 'stats.json',
             saveOnlyStats: false,
             open: false,
@@ -51,6 +51,7 @@ const config = {
                 exclude: ["/node_modules/"],
             },
         ],
+        plugins: [new HtmlWebpackPlugin()],
     },
     resolve: {
         fallback: {
